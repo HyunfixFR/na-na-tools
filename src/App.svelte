@@ -1,19 +1,18 @@
 <script>
-  let colorPrincipalRp = "#B59FDF";
-  let colorWhiteFond = "#FFFFFF";
-  let colorBlack = "#000000";
+  let colorPrincipalRp = localStorage.getItem("colorPrincipalRp") || "#B59FDF";
+  let colorWhiteFond = localStorage.getItem("colorWhiteFond") || "#FFFFFF";
+  let colorBlack = localStorage.getItem("colorBlack") || "#000000";
   let fontPoppins = "Poppins, sans-serif";
-  let fontSatisfy = "Satisfy, cursive";
 
-  let imgPerso1 = "https://zupimages.net/up/24/19/uxyx.png";
-  let imgPerso2 = "https://zupimages.net/up/24/19/4tp3.png";
-  let imgHeader = "https://zupimages.net/up/24/19/e3y0.gif";
+  let imgPerso1 = localStorage.getItem("imgPerso1") || "https://zupimages.net/up/24/19/uxyx.png";
+  let imgPerso2 = localStorage.getItem("imgPerso2") || "https://zupimages.net/up/24/19/4tp3.png";
+  let imgHeader = localStorage.getItem("imgHeader") || "https://zupimages.net/up/24/19/e3y0.gif";
 
-  let titleRp = "Paumée dans la forêt.. vraiment ?";
-  let featRp = "Feat Nana & Baryon";
-  let texteRp = `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla diam ipsum, cursus nec dictum sit amet, lacinia quis ex. Nullam a tortor eget nisl pretium viverra id vitae enim. Donec arcu turpis, tincidunt nec sem a, ultrices dictum lectus. Fusce lacinia sapien tellus, in molestie lacus gravida sit amet. Nullam sed justo et libero ultricies semper ut eget orci. Sed ut massa nec lorem rutrum luctus a in orci. Quisque ultrices tellus a nunc faucibus ultrices.`;
+  let titleRp = localStorage.getItem("titleRp") || "Paumée dans la forêt.. vraiment ?";
+  let featRp = localStorage.getItem("featRp") || "Feat Nana & Baryon";
+  let texteRp = localStorage.getItem("texteRp") || `Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla diam ipsum, cursus nec dictum sit amet, lacinia quis ex. Nullam a tortor eget nisl pretium viverra id vitae enim. Donec arcu turpis, tincidunt nec sem a, ultrices dictum lectus. Fusce lacinia sapien tellus, in molestie lacus gravida sit amet. Nullam sed justo et libero ultricies semper ut eget orci. Sed ut massa nec lorem rutrum luctus a in orci. Quisque ultrices tellus a nunc faucibus ultrices.`;
 
-  let dynamicTextBlocks = [
+  let dynamicTextBlocks = JSON.parse(localStorage.getItem("dynamicTextBlocks")) || [
       { type: 'text', content: 'Praesent et felis enim. Morbi augue mi, fermentum in pretium vitae, euismod nec magna. Aenean sodales nisi lorem, sit amet sollicitudin neque dignissim non.' },
       { type: 'parole', content: 'un chaton se balade sur le bord du chemin fleuris suivit de ses deux frères et sœurs. Margarett leur petite maîtresse les suit en cueillant des pâquerettes.' },
       { type: 'text', content: 'Curabitur imperdiet id urna malesuada faucibus. Mauris ullamcorper, elit ut hendrerit porta, urna nibh vulputate justo, nec interdum orci magna ut sapien.' }
@@ -55,21 +54,17 @@
   }
 
   function saveAllChanges() {
-      // Fonction pour sauvegarder toutes les modifications (ex: envoyer les données à une API)
-      console.log('Sauvegarde des modifications :', {
-          colorPrincipalRp,
-          colorWhiteFond,
-          colorBlack,
-          fontPoppins,
-          fontSatisfy,
-          imgPerso1,
-          imgPerso2,
-          imgHeader,
-          titleRp,
-          featRp,
-          texteRp,
-          dynamicTextBlocks
-      });
+      localStorage.setItem("colorPrincipalRp", colorPrincipalRp);
+      localStorage.setItem("colorWhiteFond", colorWhiteFond);
+      localStorage.setItem("colorBlack", colorBlack);
+      localStorage.setItem("imgPerso1", imgPerso1);
+      localStorage.setItem("imgPerso2", imgPerso2);
+      localStorage.setItem("imgHeader", imgHeader);
+      localStorage.setItem("titleRp", titleRp);
+      localStorage.setItem("featRp", featRp);
+      localStorage.setItem("texteRp", texteRp);
+      localStorage.setItem("dynamicTextBlocks", JSON.stringify(dynamicTextBlocks));
+
       alert('Modifications sauvegardées');
   }
 
@@ -80,14 +75,13 @@
 
   // Génère le code à copier en fonction des couleurs actuelles
   $: codeToCopy = `
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Satisfy&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
       :root {
           --color-principal-rp: ${colorPrincipalRp};
           --color-white-fond: ${colorWhiteFond};
           --color-black: ${colorBlack};
           --font-poppins: ${fontPoppins};
-          --font-satisfy: ${fontSatisfy};
       }
       .fiche_rp {
           display: flex;
@@ -141,7 +135,7 @@
           top: -10px;
           text-align: center;
           right: 29px;
-          font-family: var(--font-satisfy);
+          font: 16px var(--font-poppins);
       }
       .parole_rp {
           margin-top: 8px;
@@ -179,7 +173,7 @@
           font: 11px var(--font-poppins);
           color: #5e4d81;
       }
-      p, .parole_rp {
+      p, .parole_rp, .feat_rp, .title_rp, textarea {
           font-family: var(--font-poppins);
       }
   </style>
@@ -222,7 +216,6 @@
       --color-white-fond: {colorWhiteFond};
       --color-black: {colorBlack};
       --font-poppins: {fontPoppins};
-      --font-satisfy: {fontSatisfy};
   }
   .fiche_rp {
       display: flex;
@@ -276,7 +269,7 @@
       top: -10px;
       text-align: center;
       right: 29px;
-      font-family: var(--font-satisfy);
+      font: 16px var(--font-poppins);
   }
   .parole_rp {
       margin-top: 8px;
@@ -314,12 +307,12 @@
       font: 11px var(--font-poppins);
       color: #5e4d81;
   }
-  p, .parole_rp {
+  p, .parole_rp, .feat_rp, .title_rp, textarea {
       font-family: var(--font-poppins);
   }
 </style>
 
-<div style="--color-principal-rp: {colorPrincipalRp}; --color-white-fond: {colorWhiteFond}; --color-black: {colorBlack}; --font-poppins: {fontPoppins}; --font-satisfy: {fontSatisfy};">
+<div style="--color-principal-rp: {colorPrincipalRp}; --color-white-fond: {colorWhiteFond}; --color-black: {colorBlack}; --font-poppins: {fontPoppins};">
   <div class="fiche_rp">
       <div class="header_rp">
           <div class="bloc_header_left">
