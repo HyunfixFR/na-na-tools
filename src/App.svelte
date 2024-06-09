@@ -2,8 +2,6 @@
   let colorPrincipalRp = localStorage.getItem("colorPrincipalRp") || "#B59FDF";
   let colorWhiteFond = localStorage.getItem("colorWhiteFond") || "#FFFFFF";
   let colorBlack = localStorage.getItem("colorBlack") || "#000000";
-  let fontPoppins = "Poppins, sans-serif";
-  let fontSatisfy = "Satisfy, cursive";
 
   let imgPerso1 = localStorage.getItem("imgPerso1") || "https://zupimages.net/up/24/19/uxyx.png";
   let imgPerso2 = localStorage.getItem("imgPerso2") || "https://zupimages.net/up/24/19/4tp3.png";
@@ -82,8 +80,6 @@
           --color-principal-rp: ${colorPrincipalRp};
           --color-white-fond: ${colorWhiteFond};
           --color-black: ${colorBlack};
-          --font-poppins: ${fontPoppins};
-          --font-satisfy: ${fontSatisfy};
       }
       .fiche_rp {
           display: flex;
@@ -109,7 +105,7 @@
           margin: 15px auto;
           width: 640px;
           padding: 10px 10px 0 10px;
-          font: 13px var(--font-poppins);
+          font: 13px "Poppins", sans-serif;
       }
       .bloc_header_left {
           display: flex;
@@ -123,7 +119,7 @@
       }
       .title_rp {
           color: var(--color-black);
-          font: 24px var(--font-poppins);
+          font: 24px "Poppins", sans-serif;
           padding: 5px;
           text-transform: uppercase;
           position: relative;
@@ -137,13 +133,13 @@
           top: -10px;
           text-align: center;
           right: 29px;
-          font: 16px var(--font-satisfy);
+          font: 16px "Satisfy", cursive;
       }
       .parole_rp {
           margin-top: 8px;
           padding: 10px;
           text-align: justify;
-          font: 13px var(--font-poppins);
+          font: 13px "Poppins", sans-serif;
           font-weight: bold;
           background-color: var(--color-principal-rp);
           margin-bottom: 10px; /* Ajouter un espace après chaque parole_rp */
@@ -171,12 +167,12 @@
       .credit {
           font-weight: bold;
           text-align: center;
-          font: 11px var(--font-poppins);
+          font: 11px "Poppins", sans-serif;
           color: #5e4d81;
           width: 100%;
       }
       p, .parole_rp, .title_rp, textarea {
-          font-family: var(--font-poppins);
+          font-family: "Poppins", sans-serif;
       }
   </style>
   <div class="fiche_rp">
@@ -187,7 +183,7 @@
           </div>
           <div class="bloc_header_right">
               <div class="title_rp">${titleRp}</div>
-              <div class="feat_rp" style="font-family: var(--font-satisfy);">${featRp}</div>
+              <div class="feat_rp">${featRp}</div>
               <img src="${imgHeader}"/>
           </div>
       </div>
@@ -217,8 +213,6 @@
       --color-principal-rp: {colorPrincipalRp};
       --color-white-fond: {colorWhiteFond};
       --color-black: {colorBlack};
-      --font-poppins: {fontPoppins};
-      --font-satisfy: {fontSatisfy};
   }
   .fiche_rp {
       display: flex;
@@ -244,7 +238,7 @@
       margin: 15px auto;
       width: 640px;
       padding: 10px 10px 0 10px;
-      font: 13px var(--font-poppins);
+      font: 13px "Poppins", sans-serif;
   }
   .bloc_header_left {
       display: flex;
@@ -258,7 +252,7 @@
   }
   .title_rp {
       color: var(--color-black);
-      font: 24px var(--font-poppins);
+      font: 24px "Poppins", sans-serif;
       padding: 5px;
       text-transform: uppercase;
       position: relative;
@@ -272,13 +266,13 @@
       top: -10px;
       text-align: center;
       right: 29px;
-      font: 16px var(--font-satisfy);
+      font: 16px "Satisfy", cursive;
   }
   .parole_rp {
       margin-top: 8px;
       padding: 10px;
       text-align: justify;
-      font: 13px var(--font-poppins);
+      font: 13px "Poppins", sans-serif;
       font-weight: bold;
       background-color: var(--color-principal-rp);
       margin-bottom: 10px; /* Ajouter un espace après chaque parole_rp */
@@ -306,63 +300,61 @@
   .credit {
       font-weight: bold;
       text-align: center;
-      font: 11px var(--font-poppins);
+      font: 11px "Poppins", sans-serif;
       color: #5e4d81;
       width: 100%;
   }
   p, .parole_rp, .title_rp, textarea {
-      font-family: var(--font-poppins);
+      font-family: "Poppins", sans-serif;
   }
 </style>
 
-<div style="--color-principal-rp: {colorPrincipalRp}; --color-white-fond: {colorWhiteFond}; --color-black: {colorBlack}; --font-poppins: {fontPoppins}; --font-satisfy: {fontSatisfy};">
-  <div class="fiche_rp">
-      <div class="header_rp">
-          <div class="bloc_header_left">
-              <img src={imgPerso1} class="img_perso_1">
-              <img src={imgPerso2} class="img_perso_2">
-          </div>
-          <div class="bloc_header_right">
-              <div class="title_rp">{titleRp}</div>
-              <div class="feat_rp">{featRp}</div>
-              <img src={imgHeader} />
-          </div>
+<div class="fiche_rp">
+  <div class="header_rp">
+      <div class="bloc_header_left">
+          <img src={imgPerso1} class="img_perso_1">
+          <img src={imgPerso2} class="img_perso_2">
       </div>
-
-      <div class="texte_rp">
-          {#each texteRp.split('\n') as paragraph}
-              <p>{paragraph}</p>
-          {/each}
-          {#each dynamicTextBlocks as block, index}
-              {#if block.type === 'text'}
-                  <p>
-                      {#if editIndex === index}
-                          <textarea bind:value={editContent} style="font-family: var(--font-poppins);"></textarea>
-                          <button on:click={() => saveEditTextBlock(index)}>Save</button>
-                          <button on:click={cancelEdit}>Cancel</button>
-                      {:else}
-                          {block.content}
-                          <button on:click={() => editTextBlock(index)}>Edit</button>
-                      {/if}
-                      <button on:click={() => removeTextBlock(index)}>Remove</button>
-                  </p>
-              {:else if block.type === 'parole'}
-                  <div class="parole_rp">
-                      {#if editIndex === index}
-                          <textarea bind:value={editContent} style="font-family: var(--font-poppins); font-weight: bold;"></textarea>
-                          <button on:click={() => saveEditTextBlock(index)}>Save</button>
-                          <button on:click={cancelEdit}>Cancel</button>
-                      {:else}
-                          <strong>{block.content}</strong>
-                          <button on:click={() => editTextBlock(index)}>Edit</button>
-                      {/if}
-                      <button on:click={() => removeTextBlock(index)}>Remove</button>
-                  </div>
-              {/if}
-          {/each}
+      <div class="bloc_header_right">
+          <div class="title_rp">{titleRp}</div>
+          <div class="feat_rp">{featRp}</div>
+          <img src={imgHeader} />
       </div>
-      <div class="credit">Nana Pensionnat Kyoto</div>
   </div>
+
+  <div class="texte_rp">
+      {#each texteRp.split('\n') as paragraph}
+          <p>{paragraph}</p>
+      {/each}
+      {#each dynamicTextBlocks as block, index}
+          {#if block.type === 'text'}
+              <p>
+                  {#if editIndex === index}
+                      <textarea bind:value={editContent}></textarea>
+                      <button on:click={() => saveEditTextBlock(index)}>Save</button>
+                      <button on:click={cancelEdit}>Cancel</button>
+                  {:else}
+                      {block.content}
+                      <button on:click={() => editTextBlock(index)}>Edit</button>
+                  {/if}
+                  <button on:click={() => removeTextBlock(index)}>Remove</button>
+              </p>
+          {:else if block.type === 'parole'}
+              <div class="parole_rp">
+                  {#if editIndex === index}
+                      <textarea bind:value={editContent} style="font-weight: bold;"></textarea>
+                      <button on:click={() => saveEditTextBlock(index)}>Save</button>
+                      <button on:click={cancelEdit}>Cancel</button>
+                  {:else}
+                      <strong>{block.content}</strong>
+                      <button on:click={() => editTextBlock(index)}>Edit</button>
+                  {/if}
+                  <button on:click={() => removeTextBlock(index)}>Remove</button>
+              </div>
+          {/if}
+      {/each}
+  </div>
+  <div class="credit">Nana Pensionnat Kyoto</div>
 </div>
 
 <button on:click={copyToClipboard}>Copier le code</button>
