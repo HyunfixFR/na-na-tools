@@ -3,6 +3,7 @@
   let colorWhiteFond = localStorage.getItem("colorWhiteFond") || "#FFFFFF";
   let colorBlack = localStorage.getItem("colorBlack") || "#000000";
   let fontPoppins = "Poppins, sans-serif";
+  let fontSatisfy = "Satisfy, cursive";
 
   let imgPerso1 = localStorage.getItem("imgPerso1") || "https://zupimages.net/up/24/19/uxyx.png";
   let imgPerso2 = localStorage.getItem("imgPerso2") || "https://zupimages.net/up/24/19/4tp3.png";
@@ -75,13 +76,14 @@
 
   // Génère le code à copier en fonction des couleurs actuelles
   $: codeToCopy = `
-  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Satisfy&display=swap" rel="stylesheet">
   <style>
       :root {
           --color-principal-rp: ${colorPrincipalRp};
           --color-white-fond: ${colorWhiteFond};
           --color-black: ${colorBlack};
           --font-poppins: ${fontPoppins};
+          --font-satisfy: ${fontSatisfy};
       }
       .fiche_rp {
           display: flex;
@@ -135,7 +137,7 @@
           top: -10px;
           text-align: center;
           right: 29px;
-          font: 16px var(--font-poppins);
+          font: 16px var(--font-satisfy);
       }
       .parole_rp {
           margin-top: 8px;
@@ -168,12 +170,11 @@
       .credit {
           font-weight: bold;
           text-align: center;
-          position: relative;
-          bottom: -10px;
           font: 11px var(--font-poppins);
           color: #5e4d81;
+          width: 100%;
       }
-      p, .parole_rp, .feat_rp, .title_rp, textarea {
+      p, .parole_rp, .title_rp, textarea {
           font-family: var(--font-poppins);
       }
   </style>
@@ -185,7 +186,7 @@
           </div>
           <div class="bloc_header_right">
               <div class="title_rp">${titleRp}</div>
-              <div class="feat_rp">${featRp}</div>
+              <div class="feat_rp" style="font-family: var(--font-satisfy);">${featRp}</div>
               <img src="${imgHeader}"/>
           </div>
       </div>
@@ -216,6 +217,7 @@
       --color-white-fond: {colorWhiteFond};
       --color-black: {colorBlack};
       --font-poppins: {fontPoppins};
+      --font-satisfy: {fontSatisfy};
   }
   .fiche_rp {
       display: flex;
@@ -269,7 +271,7 @@
       top: -10px;
       text-align: center;
       right: 29px;
-      font: 16px var(--font-poppins);
+      font: 16px var(--font-satisfy);
   }
   .parole_rp {
       margin-top: 8px;
@@ -302,17 +304,16 @@
   .credit {
       font-weight: bold;
       text-align: center;
-      position: relative;
-      bottom: -10px;
       font: 11px var(--font-poppins);
       color: #5e4d81;
+      width: 100%;
   }
-  p, .parole_rp, .feat_rp, .title_rp, textarea {
+  p, .parole_rp, .title_rp, textarea {
       font-family: var(--font-poppins);
   }
 </style>
 
-<div style="--color-principal-rp: {colorPrincipalRp}; --color-white-fond: {colorWhiteFond}; --color-black: {colorBlack}; --font-poppins: {fontPoppins};">
+<div style="--color-principal-rp: {colorPrincipalRp}; --color-white-fond: {colorWhiteFond}; --color-black: {colorBlack}; --font-poppins: {fontPoppins}; --font-satisfy: {fontSatisfy};">
   <div class="fiche_rp">
       <div class="header_rp">
           <div class="bloc_header_left">
