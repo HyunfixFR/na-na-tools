@@ -1,4 +1,6 @@
 <script>
+  import { onMount } from "svelte";
+
   let colorPrincipalRp = localStorage.getItem("colorPrincipalRp") || "#B59FDF";
   let colorWhiteFond = localStorage.getItem("colorWhiteFond") || "#FFFFFF";
   let colorBlack = localStorage.getItem("colorBlack") || "#000000";
@@ -171,8 +173,8 @@
           color: #5e4d81;
           width: 100%;
       }
-      p, .parole_rp, .title_rp, textarea {
-          font-family: "Poppins", sans-serif;
+      .content p {
+          font: 13px "Poppins", sans-serif;
       }
   </style>
   <div class="fiche_rp">
@@ -309,7 +311,7 @@
   }
 </style>
 
-<div class="fiche_rp">
+<div class="fiche_rp" style="--color-principal-rp: {colorPrincipalRp}; --color-white-fond: {colorWhiteFond}; --color-black: {colorBlack};">
   <div class="header_rp">
       <div class="bloc_header_left">
           <img src={imgPerso1} class="img_perso_1">
