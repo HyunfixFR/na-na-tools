@@ -149,6 +149,7 @@
           text-align: justify;
           font: 13px var(--font-poppins);
           background-color: var(--color-principal-rp);
+          margin-bottom: 10px; /* Ajouter un espace après chaque parole_rp */
       }
       .bloc_header_right img {
           width: 276px;
@@ -177,6 +178,9 @@
           bottom: -10px;
           font: 11px var(--font-poppins);
           color: #5e4d81;
+      }
+      p, .parole_rp {
+          font-family: var(--font-poppins);
       }
   </style>
   <div class="fiche_rp">
@@ -310,6 +314,9 @@
       font: 11px var(--font-poppins);
       color: #5e4d81;
   }
+  p, .parole_rp {
+      font-family: var(--font-poppins);
+  }
 </style>
 
 <div style="--color-principal-rp: {colorPrincipalRp}; --color-white-fond: {colorWhiteFond}; --color-black: {colorBlack}; --font-poppins: {fontPoppins}; --font-satisfy: {fontSatisfy};">
@@ -334,7 +341,7 @@
               {#if block.type === 'text'}
                   <p>
                       {#if editIndex === index}
-                          <textarea bind:value={editContent}></textarea>
+                          <textarea bind:value={editContent} style="font-family: var(--font-poppins);"></textarea>
                           <button on:click={() => saveEditTextBlock(index)}>Save</button>
                           <button on:click={cancelEdit}>Cancel</button>
                       {:else}
@@ -346,7 +353,7 @@
               {:else if block.type === 'parole'}
                   <div class="parole_rp">
                       {#if editIndex === index}
-                          <textarea bind:value={editContent}></textarea>
+                          <textarea bind:value={editContent} style="font-family: var(--font-poppins);"></textarea>
                           <button on:click={() => saveEditTextBlock(index)}>Save</button>
                           <button on:click={cancelEdit}>Cancel</button>
                       {:else}
