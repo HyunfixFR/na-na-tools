@@ -144,6 +144,7 @@
           padding: 10px;
           text-align: justify;
           font: 13px var(--font-poppins);
+          font-weight: bold;
           background-color: var(--color-principal-rp);
           margin-bottom: 10px; /* Ajouter un espace après chaque parole_rp */
       }
@@ -278,6 +279,7 @@
       padding: 10px;
       text-align: justify;
       font: 13px var(--font-poppins);
+      font-weight: bold;
       background-color: var(--color-principal-rp);
       margin-bottom: 10px; /* Ajouter un espace après chaque parole_rp */
   }
@@ -347,11 +349,11 @@
               {:else if block.type === 'parole'}
                   <div class="parole_rp">
                       {#if editIndex === index}
-                          <textarea bind:value={editContent} style="font-family: var(--font-poppins);"></textarea>
+                          <textarea bind:value={editContent} style="font-family: var(--font-poppins); font-weight: bold;"></textarea>
                           <button on:click={() => saveEditTextBlock(index)}>Save</button>
                           <button on:click={cancelEdit}>Cancel</button>
                       {:else}
-                          {block.content}
+                          <strong>{block.content}</strong>
                           <button on:click={() => editTextBlock(index)}>Edit</button>
                       {/if}
                       <button on:click={() => removeTextBlock(index)}>Remove</button>
